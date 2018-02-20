@@ -1,0 +1,63 @@
+HABITAT FOR HUMANITY WEBAPP
+
+Online store for Habitat for Humanity where customers can browse an organized and documented digital inventory of all items that are held in stock in a specific Habitat for Humanity Store.
+
+ 
+
+RISK FACTORS
+
+
+
+SYSTEM LEVEL USE CASE DIAGRAM
+
+Customer-relative features:
+
+*Site account required
+
+Log-in/create account(using email)
+
+Search for product by:
+
+category -> (windows/doors/materials/etc.)
+
+dimensions -> "smaller/larger than l,w,(h)"
+
+price range
+
+general description/title of product
+
+(All relevant searches to be ordered alphabetically initially, with option to order by size or price)
+
+Online payment for product 
+
+
+
+Employee-relative features:
+
+Add/remove/edit items to/from/on list
+
+Add procedure must fulfill/include following criteria
+
+1). Category
+
+2). Title
+
+3). Description
+
+4). Dimensions
+
+5). Price
+
+6). Picture
+
+ 
+
+ARCHITECTURE DIAGRAM
+
+Employee adding Interface
+
+- Basic webform with marked entry boxes for data, and a drag & drop box for one or more photos
+
+
+
+SUBSYSTEM DESCRIPTIONS
