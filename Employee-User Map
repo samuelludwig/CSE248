@@ -1,0 +1,57 @@
+Criteria
+
+Enter merchandise
+
+Add
+Remove
+Edit
+ 
+
+New
+
+Auto assign product id
+Auto assign date added
+Auto assign date sold
+Auto assign Expiration date (+90 days from date sold)
+ 
+
+Name
+Description
+Category (by name or by ID)
+Size
+Price
+Similar items (for relevant pricing)
+Item stock location?
+Search by product ID/keyword/category (same as user search)
+ 
+
+Refunds
+
+Re-activate product iD/item on online catalog
+Purchaser’s account reflects refunded transaction
+ 
+
+User account
+
+Name (edit)
+Billing info (edit)
+Favorite store location (zip code)
+Previous orders
+Order waiting for pickup (cancel – acts like refund except item is not physically returned. Credit card or store credit needs to be given online) Alternative option could be that all waiting orders that are cancelled prior to pick-up requires the user to contact the store, then just surface the ‘Contact us’ number)
+ 
+
+Things to consider about search
+
+Search all by keyword
+Search by keyword within a category
+Search results page (exact or closest match) > item detail page
+ 
+
+Global elements (accessible from Store Main Landing page, search results, category landing page, item details page)
+
+Link to H4H home
+Search
+Categories
+Contact us
+User account
+Settings (link to main H4H account Settings)
