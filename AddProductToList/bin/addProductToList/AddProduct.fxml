@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="16.0" layoutY="14.0" text="Name:" />
+      <Label layoutX="16.0" layoutY="47.0" text="Description:" />
+      <Label layoutX="15.0" layoutY="139.0" text="Price:" />
+      <Label layoutX="16.0" layoutY="181.0" text="Length:" />
+      <Label layoutX="16.0" layoutY="215.0" text="Width:" />
+      <Label layoutX="15.0" layoutY="245.0" text="Height:" />
+      <Label layoutX="17.0" layoutY="294.0" text="Image:" />
+      <Button layoutX="480.0" layoutY="349.0" mnemonicParsing="false" text="Add Product" />
+      <TextField layoutX="100.0" layoutY="10.0" />
+      <TextArea layoutX="100.0" layoutY="39.0" prefHeight="89.0" prefWidth="320.0" />
+      <TextField layoutX="100.0" layoutY="135.0" />
+      <TextField layoutX="100.0" layoutY="177.0" />
+      <TextField layoutX="100.0" layoutY="211.0" />
+      <TextField layoutX="100.0" layoutY="241.0" />
+      <TextField layoutX="100.0" layoutY="290.0" />
+      <Button layoutX="16.0" layoutY="349.0" mnemonicParsing="false" text="Go Back" />
+   </children>
+</AnchorPane>
