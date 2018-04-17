@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="editAccount.EditAccountController">
+   <children>
+      <TextField fx:id="fNameBox" layoutX="167.0" layoutY="48.0" />
+      <TextField fx:id="lNameBox" layoutX="167.0" layoutY="85.0" />
+      <TextField fx:id="usernameBox" layoutX="167.0" layoutY="119.0" />
+      <PasswordField fx:id="passwordBox" layoutX="167.0" layoutY="196.0" />
+      <PasswordField fx:id="passwordCheckBox" layoutX="167.0" layoutY="233.0" />
+      <TextField fx:id="phoneBox" layoutX="167.0" layoutY="309.0" />
+      <TextField fx:id="countryBox" layoutX="500.0" layoutY="48.0" />
+      <TextField fx:id="stateBox" layoutX="500.0" layoutY="85.0" />
+      <TextField fx:id="cityBox" layoutX="500.0" layoutY="123.0" />
+      <TextField fx:id="zipBox" layoutX="500.0" layoutY="158.0" />
+      <TextField fx:id="addressBox" layoutX="500.0" layoutY="196.0" />
+      <TextField fx:id="emailBox" layoutX="500.0" layoutY="309.0" />
+      <Button fx:id="updateAccountButton" layoutX="167.0" layoutY="373.0" mnemonicParsing="false" onAction="#editAccount" text="Update Account" />
+      <Label fx:id="welcomeBanner" layoutX="14.0" layoutY="14.0" text="Tell us a little bit about yourself..." />
+      <Label fx:id="passwordMismatch" layoutX="167.0" layoutY="265.0" prefHeight="40.0" prefWidth="149.0" textFill="RED" />
+      <Label layoutX="26.0" layoutY="60.0" text="*First Name:" />
+      <Label layoutX="26.0" layoutY="93.0" text="*Last Name:" />
+      <Label layoutX="26.0" layoutY="127.0" text="*Enter a Username:" />
+      <Label layoutX="26.0" layoutY="204.0" text="*Enter a Password:" />
+      <Label layoutX="26.0" layoutY="241.0" text="*Re-Enter Password:" />
+      <Label layoutX="446.0" layoutY="52.0" text="Country:" />
+      <Label layoutX="446.0" layoutY="89.0" text="State:" />
+      <Label layoutX="446.0" layoutY="127.0" text="City:" />
+      <Label layoutX="446.0" layoutY="162.0" text="Zip Code:" />
+      <Label layoutX="446.0" layoutY="200.0" text="Address:" />
+      <Label layoutX="26.0" layoutY="313.0" text="*Phone-Number:" />
+      <Label layoutX="59.0" layoutY="539.0" text="All fields with &quot; * &quot; are required fields..." textFill="RED" />
+      <Label fx:id="dbstatus" layoutX="500.0" layoutY="556.0" prefHeight="17.0" prefWidth="149.0" />
+      <Label layoutX="446.0" layoutY="313.0" text="*Email:" />
+      <Label fx:id="errorLabel" layoutX="167.0" layoutY="422.0" prefHeight="17.0" prefWidth="149.0" textFill="#f50000" />
+      <Button fx:id="addPaymentButton" layoutX="167.0" layoutY="460.0" mnemonicParsing="false" onAction="#addPaymentInfo" text="Add Payment Information" />
+      <Label fx:id="usernameTaken" layoutX="167.0" layoutY="154.0" prefHeight="17.0" prefWidth="149.0" textFill="RED" />
+   </children>
+</AnchorPane>

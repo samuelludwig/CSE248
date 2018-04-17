@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.H4HLoginController">
+   <children>
+      <Button fx:id="loginButton" layoutX="177.0" layoutY="210.0" mnemonicParsing="false" onAction="#login" text="Login" />
+      <Label fx:id="dbstatus" alignment="CENTER" layoutX="174.0" layoutY="54.0" text="Welcome!" />
+      <TextField fx:id="username" layoutX="126.0" layoutY="89.0" promptText="Enter username here..." />
+      <PasswordField fx:id="password" layoutX="126.0" layoutY="128.0" promptText="Enter password here..." />
+      <ComboBox fx:id="comboBox" layoutX="126.0" layoutY="169.0" prefWidth="150.0" promptText="Customer/Employee" />
+      <Label fx:id="loginStatus" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="366.0" />
+   </children>
+</AnchorPane>

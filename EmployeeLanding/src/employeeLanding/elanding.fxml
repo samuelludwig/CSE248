@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="272.0" layoutY="292.0" mnemonicParsing="false" text="Log Out" />
+      <Button layoutX="238.0" layoutY="188.0" mnemonicParsing="false" text="Update Account Info" />
+      <Button layoutX="234.0" layoutY="84.0" mnemonicParsing="false" text="Search For Something" />
+   </children>
+</AnchorPane>
