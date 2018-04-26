@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="840.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="customerProductSearch.SearchController">
    <left>
-      <VBox prefHeight="430.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="742.0" prefWidth="178.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" text="Search" />
-            <TextField />
-            <ComboBox prefWidth="150.0" promptText="In Category -" />
+            <TextField fx:id="nameSearch" />
+            <ComboBox fx:id="categorySelect" prefWidth="150.0" promptText="In Category -" />
+            <Label text="id" />
+            <TextField fx:id="idSearch" />
             <Label text="Price" />
-            <TextField />
-            <Label text="Label" />
-            <TextField />
+            <TextField fx:id="priceSearch" />
             <Label text="length" />
-            <TextField />
+            <TextField fx:id="lengthSearch" />
             <Label text="width" />
-            <TextField />
+            <TextField fx:id="widthSearch" />
             <Label text="height" />
-            <TextField />
-            <TreeView prefHeight="437.0" prefWidth="200.0">
-               <VBox.margin>
-                  <Insets left="4.0" />
-               </VBox.margin>
-            </TreeView>
+            <TextField fx:id="heightSearch" prefHeight="25.0" prefWidth="245.0" />
          </children>
+         <padding>
+            <Insets left="4.0" right="4.0" />
+         </padding>
       </VBox>
    </left>
    <top>
       <HBox prefHeight="34.0" prefWidth="720.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Log Out" />
-            <Button mnemonicParsing="false" text="View Orders" />
-            <Button mnemonicParsing="false" text="Edit Account" />
+            <Button fx:id="logOutButton" mnemonicParsing="false" text="Log Out" />
+            <Button fx:id="viewOrdersButton" mnemonicParsing="false" text="View Orders" />
+            <Button fx:id="editAccountButton" mnemonicParsing="false" text="Edit Account" />
          </children>
          <padding>
             <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
@@ -44,30 +44,79 @@
       </HBox>
    </top>
    <right>
-      <VBox prefHeight="283.0" prefWidth="16.0" BorderPane.alignment="CENTER">
-         <children>
-            <ScrollBar orientation="VERTICAL" prefHeight="446.0" prefWidth="16.0" />
-         </children>
-      </VBox>
+      <VBox prefHeight="283.0" prefWidth="16.0" BorderPane.alignment="CENTER" />
    </right>
    <bottom>
-      <HBox prefHeight="17.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="32.0" prefWidth="1300.0" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="dbStatus" text="dbStatus">
                <padding>
                   <Insets bottom="2.0" left="4.0" />
                </padding>
             </Label>
+            <Button fx:id="previousPageButton" mnemonicParsing="false" prefHeight="6.0" prefWidth="91.0" text="Previous Page" />
+            <Button fx:id="nextPageButton" mnemonicParsing="false" text="Next Page" />
          </children>
       </HBox>
    </bottom>
    <center>
       <VBox prefHeight="429.0" prefWidth="591.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Sort via..." />
-            <Button mnemonicParsing="false" text="Price" />
-            <Button mnemonicParsing="false" text="Date Added" />
-            <Button mnemonicParsing="false" text="Relevance" />
+            <HBox prefHeight="26.0" prefWidth="1038.0">
+               <children>
+                  <Label text="Sort via..." />
+                  <Button mnemonicParsing="false" text="Price" />
+                  <Button mnemonicParsing="false" text="Date Added" />
+                  <Button mnemonicParsing="false" text="Relevance" />
+               </children>
+               <padding>
+                  <Insets bottom="4.0" top="4.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="63.0" prefWidth="1060.0">
+               <children>
+                  <Separator prefHeight="0.0" prefWidth="1128.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField prefHeight="0.0" prefWidth="600.0" text="id" />
+                  <TextField prefWidth="600.0" text="name" />
+                  <TextField prefWidth="600.0" text="price" />
+                  <TextField prefWidth="600.0" text="length" />
+                  <TextField prefHeight="25.0" prefWidth="600.0" text="width" />
+                  <TextField prefHeight="25.0" prefWidth="600.0" text="height" />
+                  <ImageView fitHeight="150.0" fitWidth="190.0" pickOnBounds="true" preserveRatio="true" />
+                  <Separator prefHeight="0.0" prefWidth="1120.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Separator prefHeight="0.0" prefWidth="1070.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Separator prefHeight="0.0" prefWidth="1065.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Separator prefHeight="0.0" prefWidth="1094.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Separator prefHeight="0.0" prefWidth="1101.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Separator prefHeight="0.0" prefWidth="1149.0" />
+               </children>
+            </HBox>
+            <Separator prefHeight="0.0" prefWidth="1200.0" />
+            <HBox prefHeight="100.0" prefWidth="200.0" />
          </children>
       </VBox>
    </center>
