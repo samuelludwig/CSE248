@@ -1,7 +1,7 @@
 package customerProductSearch;
 
 public enum Categories {
-	Furniture, Appliances, Building_Material, Tools;
+	Furniture, Appliances, Building_Materials, Tools;
 	
 	private Categories() {}
 	

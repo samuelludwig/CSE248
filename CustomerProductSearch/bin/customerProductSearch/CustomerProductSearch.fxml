@@ -10,9 +10,9 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="840.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="customerProductSearch.SearchController">
    <left>
-      <VBox prefHeight="742.0" prefWidth="178.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="742.0" prefWidth="178.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Search" />
+            <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchProduct" text="Search" />
             <TextField fx:id="nameSearch" />
             <ComboBox fx:id="categorySelect" prefWidth="150.0" promptText="In Category -" />
             <Label text="id" />
@@ -32,7 +32,7 @@
       </VBox>
    </left>
    <top>
-      <HBox prefHeight="34.0" prefWidth="720.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="34.0" prefWidth="720.0" style="-fx-background-color: #0077FF; -fx-border-style: solid; -fx-border-color: gold;" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="logOutButton" mnemonicParsing="false" text="Log Out" />
             <Button fx:id="viewOrdersButton" mnemonicParsing="false" text="View Orders" />
@@ -78,41 +78,73 @@
                   <Separator prefHeight="0.0" prefWidth="1128.0" />
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="1100.0">
                <children>
-                  <TextField prefHeight="0.0" prefWidth="600.0" text="id" />
-                  <TextField prefWidth="600.0" text="name" />
-                  <TextField prefWidth="600.0" text="price" />
-                  <TextField prefWidth="600.0" text="length" />
-                  <TextField prefHeight="25.0" prefWidth="600.0" text="width" />
-                  <TextField prefHeight="25.0" prefWidth="600.0" text="height" />
-                  <ImageView fitHeight="150.0" fitWidth="190.0" pickOnBounds="true" preserveRatio="true" />
+                  <TextField fx:id="id1" minWidth="-Infinity" prefHeight="25.0" prefWidth="75.0" text="id1" />
+                  <TextField fx:id="name1" minWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" text="name1" />
+                  <TextArea fx:id="description1" minWidth="-Infinity" prefHeight="100.0" prefWidth="152.0" />
+                  <TextField fx:id="price1" minWidth="-Infinity" prefHeight="33.0" prefWidth="157.0" text="price1" />
+                  <TextField fx:id="length1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="118.0" text="length1" />
+                  <TextArea fx:id="dateAdded1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="58.0" prefWidth="90.0" />
+                  <TextField fx:id="width1" minWidth="-Infinity" prefHeight="25.0" prefWidth="100.0" text="width1" />
+                  <TextField fx:id="height1" minWidth="-Infinity" prefHeight="25.0" prefWidth="100.0" text="height1" />
+                  <ImageView fx:id="image1" fitHeight="100.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" />
                   <Separator prefHeight="0.0" prefWidth="1120.0" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Separator prefHeight="0.0" prefWidth="1070.0" />
+                  <TextField fx:id="id2" prefHeight="25.0" prefWidth="600.0" />
+                  <TextField fx:id="name2" prefHeight="25.0" prefWidth="600.0" />
+                  <TextField fx:id="price2" prefWidth="600.0" />
+                  <TextField fx:id="length2" prefWidth="600.0" />
+                  <TextField fx:id="width2" prefWidth="600.0" />
+                  <TextField fx:id="height2" prefHeight="0.0" prefWidth="600.0" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Separator prefHeight="0.0" prefWidth="1065.0" />
+                  <TextField fx:id="id3" prefHeight="25.0" prefWidth="600.0" />
+                  <TextField fx:id="name3" prefHeight="25.0" prefWidth="600.0" />
+                  <TextField fx:id="price3" prefWidth="600.0" />
+                  <TextField fx:id="length3" prefWidth="600.0" />
+                  <TextField fx:id="width3" prefWidth="600.0" />
+                  <TextField fx:id="height3" prefHeight="0.0" prefWidth="600.0" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Separator prefHeight="0.0" prefWidth="1094.0" />
+                  <TextField fx:id="id4" prefHeight="25.0" prefWidth="600.0" />
+                  <TextField fx:id="name4" prefHeight="25.0" prefWidth="600.0" />
+                  <TextField fx:id="price4" prefWidth="600.0" />
+                  <TextField fx:id="length4" prefWidth="600.0" />
+                  <TextField fx:id="width4" prefWidth="600.0" />
+                  <TextField fx:id="height4" prefHeight="0.0" prefWidth="600.0" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Separator prefHeight="0.0" prefWidth="1101.0" />
+                  <TextField fx:id="id5" prefHeight="25.0" prefWidth="600.0" />
+                  <TextField fx:id="name5" prefHeight="25.0" prefWidth="600.0" />
+                  <TextField fx:id="price5" prefWidth="600.0" />
+                  <TextField fx:id="length5" prefWidth="600.0" />
+                  <TextField fx:id="width5" prefWidth="600.0" />
+                  <TextField fx:id="height5" prefHeight="0.0" prefWidth="600.0" />
                </children>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Separator prefHeight="0.0" prefWidth="1149.0" />
+                  <TextField fx:id="id6" prefHeight="25.0" prefWidth="600.0" />
+                  <TextField fx:id="name6" prefHeight="25.0" prefWidth="600.0" />
+                  <TextField fx:id="price6" prefWidth="600.0" />
+                  <TextField fx:id="length6" prefWidth="600.0" />
+                  <TextField fx:id="width6" prefWidth="600.0" />
+                  <TextField fx:id="height6" prefHeight="0.0" prefWidth="600.0" />
                </children>
             </HBox>
             <Separator prefHeight="0.0" prefWidth="1200.0" />
