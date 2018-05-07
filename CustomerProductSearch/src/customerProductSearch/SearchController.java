@@ -1,12 +1,13 @@
 package customerProductSearch;
 
 import java.net.URL;
-import java.sql.Blob;
+//import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,7 +16,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
+//import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class SearchController implements Initializable {
@@ -98,17 +99,17 @@ public class SearchController implements Initializable {
 	@FXML 
 	private TextField price6;
 	@FXML 
-	private TextField dateAdded1;
+	private TextArea dateAdded1;
 	@FXML 
-	private TextField dateAdded2;
+	private TextArea dateAdded2;
 	@FXML 
-	private TextField dateAdded3;
+	private TextArea dateAdded3;
 	@FXML 
-	private TextField dateAdded4;
+	private TextArea dateAdded4;
 	@FXML 
-	private TextField dateAdded5;
+	private TextArea dateAdded5;
 	@FXML 
-	private TextField dateAdded6;
+	private TextArea dateAdded6;
 	@FXML 
 	private TextField length1;
 	@FXML 
@@ -158,6 +159,7 @@ public class SearchController implements Initializable {
 	@FXML
 	private ImageView image6;
 	
+	public int rowSize = 6;
 	
 	SearchModel newSearchModel = new SearchModel();
 
@@ -168,18 +170,22 @@ public class SearchController implements Initializable {
 		} else {
 			this.dbStatus.setText("Connection failed...");
 		}
+		this.categorySelect.setItems(FXCollections.observableArrayList(Categories.values()));
 	}
 	
 	// puts all possible results into one virtual table to be sorted through //
-	private void getResults() {
-		String makeVirtualTable = "CREATE VIRTUAL TABLE VirtualProductTable USING fts5 (id, name, description, price, length, width, height, "
-				+ "dateAdded, isFurniture, isAppliance, isBuildingMaterial, isTool, selected, image)";
-		try {
-			PreparedStatement stmt = this.newSearchModel.connection.prepareStatement(makeVirtualTable);
-			stmt.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+	public void getResults() {
+//		String makeVirtualTable = "CREATE VIRTUAL TABLE VirtualProductTable USING fts5 "
+//				+ "(id, name, description, price, length, width, height, "
+//				+ "dateAdded, isFurniture, isAppliance, isBuildingMaterial, isTool, selected, image)";
+//		try {
+//			PreparedStatement stmt = this.newSearchModel.connection.prepareStatement(makeVirtualTable);
+//			stmt.execute();
+//			System.out.println("executed: " + makeVirtualTable);
+//			stmt.close();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
 		
 		String sqlGetData = "INSERT INTO VirtualProductTable SELECT * FROM H4HProductTable WHERE id = ? AND price <= ?" + 
 			 " AND length <= ? AND width <= ? AND height <= ?";
@@ -193,6 +199,7 @@ public class SearchController implements Initializable {
 			break;
 		case "Building_Materials":
 			sqlGetData.concat(" AND isBuildingMaterial = 1");
+			System.out.println("Materials case hit");
 			break;
 		case "Tools":
 			sqlGetData.concat(" AND isTool = 1");
@@ -235,19 +242,218 @@ public class SearchController implements Initializable {
 			}
 			
 			stmt.execute();
+			System.out.println("executed: " + sqlGetData);
+			stmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 	}
 	
-	public int showFirstSix() {
+	public void showFirstSix() {
+		PreparedStatement takeFields = null;
+		ResultSet rs = null;
+
+		String sqlTakeFields = "SELECT * FROM VirtualProductTable WHERE VirtualProductTable MATCH ? ORDER BY rank DESC";
+		try {
+			takeFields = this.newSearchModel.connection.prepareStatement(sqlTakeFields);
+			takeFields.setString(1, nameSearch.getText());
+			rs = takeFields.executeQuery();
+//			rs.next();
+			if(! rs.next()) {
+				System.out.println("no table loaded");
+				return;
+			}
+			// first entry
+			String id = rs.getString(1);
+			String name = rs.getString(2);
+			String description = rs.getString(3);
+			String price = rs.getString(4);
+			String length = rs.getString(5);
+			String width = rs.getString(6);
+			String height = rs.getString(7);
+			String dateAdded = rs.getString(8);
+//			Blob image = rs.getBlob(14);
+			
+			id1.setText(id);
+			name1.setText(name);
+			description1.setText(description);
+			dateAdded1.setText(dateAdded);
+			price1.setText(price);
+			length1.setText(length);
+			width1.setText(width);
+			height1.setText(height);
+//			image1.setImage((Image) image);
+			
+			if(! rs.next()) {
+				return;
+			}
+			// second entry
+//			rs.next();
+			
+			id = rs.getString(1);
+			name = rs.getString(2);
+			description = rs.getString(3);
+			price = rs.getString(4);
+			length = rs.getString(5);
+			width = rs.getString(6);
+			height = rs.getString(7);
+			dateAdded = rs.getString(8);
+//			image = rs.getBlob(14);
+			
+			id2.setText(id);
+			name2.setText(name);
+			description2.setText(description);
+			dateAdded2.setText(dateAdded);
+			price2.setText(price);
+			length2.setText(length);
+			width2.setText(width);
+			height2.setText(height);
+//			image2.setImage((Image) image);
+			
+			if(! rs.next()) {
+				return;
+			}
+			// third entry
+//			rs.next();
+			
+			id = rs.getString(1);
+			name = rs.getString(2);
+			description = rs.getString(3);
+			price = rs.getString(4);
+			length = rs.getString(5);
+			width = rs.getString(6);
+			height = rs.getString(7);
+			dateAdded = rs.getString(8);
+//			image = rs.getBlob(14);
+			
+			id3.setText(id);
+			name3.setText(name);
+			description3.setText(description);
+			dateAdded3.setText(dateAdded);
+			price3.setText(price);
+			length3.setText(length);
+			width3.setText(width);
+			height3.setText(height);
+//			image3.setImage((Image) image);
+			
+			if(! rs.next()) {
+				return;
+			}
+			// fourth entry
+//			rs.next();
+			
+			id = rs.getString(1);
+			name = rs.getString(2);
+			description = rs.getString(3);
+			price = rs.getString(4);
+			length = rs.getString(5);
+			width = rs.getString(6);
+			height = rs.getString(7);
+			dateAdded = rs.getString(8);
+//			image = rs.getBlob(14);
+			
+			id4.setText(id);
+			name4.setText(name);
+			description4.setText(description);
+			dateAdded4.setText(dateAdded);
+			price4.setText(price);
+			length4.setText(length);
+			width4.setText(width);
+			height4.setText(height);
+//			image4.setImage((Image) image);
+			
+			if(! rs.next()) {
+				return;
+			}
+			// fifth entry
+//			rs.next();
+			
+			id = rs.getString(1);
+			name = rs.getString(2);
+			description = rs.getString(3);
+			price = rs.getString(4);
+			length = rs.getString(5);
+			width = rs.getString(6);
+			height = rs.getString(7);
+			dateAdded = rs.getString(8);
+//			image = rs.getBlob(14);
+			
+			id5.setText(id);
+			name5.setText(name);
+			description5.setText(description);
+			dateAdded5.setText(dateAdded);
+			price5.setText(price);
+			length5.setText(length);
+			width5.setText(width);
+			height5.setText(height);
+//			image5.setImage((Image) image);
+			
+			if(! rs.next()) {
+				return;
+			}
+			// sixth entry
+//			rs.next();
+			
+			id = rs.getString(1);
+			name = rs.getString(2);
+			description = rs.getString(3);
+			price = rs.getString(4);
+			length = rs.getString(5);
+			width = rs.getString(6);
+			height = rs.getString(7);
+			dateAdded = rs.getString(8);
+//			image = rs.getBlob(14);
+			
+			id6.setText(id);
+			name6.setText(name);
+			description6.setText(description);
+			dateAdded6.setText(dateAdded);
+			price6.setText(price);
+			length6.setText(length);
+			width6.setText(width);
+			height6.setText(height);
+//			image6.setImage((Image) image);
+			takeFields.close();
+			rs.close();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		// gets a sorted list of matching products, next we just need to print them out entry by entry //
+		// we'll traverse every row in the result set, and print all needed values before moving to the next row //
+		
+		/* 
+		 *  **********************************************
+		 *  TODO: What if there are less than six entries? 
+		 *  **********************************************
+		 */
+		
+	}
+	
+	public void searchProduct (ActionEvent event) throws Exception {
+		// makes sure we are not just piling table after table every consecutive search //
+
+		String drop = "TRUNCATE TABLE VirtualProductTable";
+		PreparedStatement stmt = this.newSearchModel.connection.prepareStatement(drop);
+		stmt.execute();
+		stmt.close();
+		
+		
+		// 1. Creates a virtual table and inserts all entries of the category we're looking for, that are also within our other criteria 
+		// 2. Sort that table into a list and print out the fields we need row by row 
+		getResults();
+		showFirstSix();
+	}
+		
+	public void gotoPreviousPage (ActionEvent event) throws Exception {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		String sqlTakeFields = "SELECT * FROM VirtualProductTable WHERE VirtualProductTable MATCH 'name:?' ORDER BY rank DESC";
 		try {
 			stmt = this.newSearchModel.connection.prepareStatement(sqlTakeFields);
 			rs = stmt.executeQuery();
+//			stmt.close();
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
@@ -263,6 +469,10 @@ public class SearchController implements Initializable {
 		
 		try {
 			
+			rs.moveToCurrentRow();
+			for (int i = 0; i < rowSize*2; i++) {
+				rs.previous();
+			}
 			// first entry
 			String id = rs.getString(2);
 			String name = rs.getString(3);
@@ -272,7 +482,7 @@ public class SearchController implements Initializable {
 			String width = rs.getString(7);
 			String height = rs.getString(8);
 			String dateAdded = rs.getString(9);
-			Blob image = rs.getBlob(14);
+//			Blob image = rs.getBlob(14);
 			
 			id1.setText(id);
 			name1.setText(name);
@@ -282,7 +492,7 @@ public class SearchController implements Initializable {
 			length1.setText(length);
 			width1.setText(width);
 			height1.setText(height);
-			image1.setImage((Image) image);
+//			image1.setImage((Image) image);
 			
 			// second entry
 			rs.next();
@@ -295,7 +505,7 @@ public class SearchController implements Initializable {
 			width = rs.getString(7);
 			height = rs.getString(8);
 			dateAdded = rs.getString(9);
-			image = rs.getBlob(14);
+//			image = rs.getBlob(14);
 			
 			id2.setText(id);
 			name2.setText(name);
@@ -305,7 +515,7 @@ public class SearchController implements Initializable {
 			length2.setText(length);
 			width2.setText(width);
 			height2.setText(height);
-			image2.setImage((Image) image);
+//			image2.setImage((Image) image);
 			
 			// third entry
 			rs.next();
@@ -318,7 +528,7 @@ public class SearchController implements Initializable {
 			width = rs.getString(7);
 			height = rs.getString(8);
 			dateAdded = rs.getString(9);
-			image = rs.getBlob(14);
+//			image = rs.getBlob(14);
 			
 			id3.setText(id);
 			name3.setText(name);
@@ -328,7 +538,7 @@ public class SearchController implements Initializable {
 			length3.setText(length);
 			width3.setText(width);
 			height3.setText(height);
-			image3.setImage((Image) image);
+//			image3.setImage((Image) image);
 			
 			// fourth entry
 			rs.next();
@@ -341,7 +551,7 @@ public class SearchController implements Initializable {
 			width = rs.getString(7);
 			height = rs.getString(8);
 			dateAdded = rs.getString(9);
-			image = rs.getBlob(14);
+//			image = rs.getBlob(14);
 			
 			id4.setText(id);
 			name4.setText(name);
@@ -351,7 +561,7 @@ public class SearchController implements Initializable {
 			length4.setText(length);
 			width4.setText(width);
 			height4.setText(height);
-			image4.setImage((Image) image);
+//			image4.setImage((Image) image);
 			
 			// fifth entry
 			rs.next();
@@ -364,7 +574,7 @@ public class SearchController implements Initializable {
 			width = rs.getString(7);
 			height = rs.getString(8);
 			dateAdded = rs.getString(9);
-			image = rs.getBlob(14);
+//			image = rs.getBlob(14);
 			
 			id5.setText(id);
 			name5.setText(name);
@@ -374,7 +584,7 @@ public class SearchController implements Initializable {
 			length5.setText(length);
 			width5.setText(width);
 			height5.setText(height);
-			image5.setImage((Image) image);
+//			image5.setImage((Image) image);
 			
 			// sixth entry
 			rs.next();
@@ -387,7 +597,7 @@ public class SearchController implements Initializable {
 			width = rs.getString(7);
 			height = rs.getString(8);
 			dateAdded = rs.getString(9);
-			image = rs.getBlob(14);
+//			image = rs.getBlob(14);
 			
 			id6.setText(id);
 			name6.setText(name);
@@ -397,31 +607,176 @@ public class SearchController implements Initializable {
 			length6.setText(length);
 			width6.setText(width);
 			height6.setText(height);
-			image6.setImage((Image) image);
+//			image6.setImage((Image) image);
 			
-			return rs.getInt(1);
-
 		} catch (SQLException e1) {
 			e1.printStackTrace();
-			return 0;
 		} 
-		
-	}
-	
-	
-	public void searchProduct (ActionEvent event) throws Exception {
-		// 1. Creates a virtual table and inserts all entries of the category we're looking for, that are also within our other criteria 
-		// 2. Sort that table into a list and print out the fields we need row by row 
-		getResults();
-		showFirstSix();
-	}
-		
-	public void gotoPreviousPage (ActionEvent event) throws Exception {
-		
 	}
 	
 	public void gotoNextPage (ActionEvent event) throws Exception {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		String sqlTakeFields = "SELECT * FROM VirtualProductTable WHERE VirtualProductTable MATCH 'name:?' ORDER BY rank DESC";
+		try {
+			stmt = this.newSearchModel.connection.prepareStatement(sqlTakeFields);
+			rs = stmt.executeQuery();
+			stmt.close();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 		
+		// gets a sorted list of matching products, next we just need to print them out entry by entry //
+		// we'll traverse every row in the result set, and print all needed values before moving to the next row //
+		
+		/* 
+		 *  **********************************************
+		 *  TODO: What if there are less than six entries? 
+		 *  **********************************************
+		 */
+		
+		try {
+			
+			rs.moveToCurrentRow();
+			// first entry
+			String id = rs.getString(2);
+			String name = rs.getString(3);
+			String description = rs.getString(4);
+			String price = rs.getString(5);
+			String length = rs.getString(6);
+			String width = rs.getString(7);
+			String height = rs.getString(8);
+			String dateAdded = rs.getString(9);
+//			Blob image = rs.getBlob(14);
+			
+			id1.setText(id);
+			name1.setText(name);
+			description1.setText(description);
+			dateAdded1.setText(dateAdded);
+			price1.setText(price);
+			length1.setText(length);
+			width1.setText(width);
+			height1.setText(height);
+//			image1.setImage((Image) image);
+			
+			// second entry
+			rs.next();
+			
+			id = rs.getString(2);
+			name = rs.getString(3);
+			description = rs.getString(4);
+			price = rs.getString(5);
+			length = rs.getString(6);
+			width = rs.getString(7);
+			height = rs.getString(8);
+			dateAdded = rs.getString(9);
+//			image = rs.getBlob(14);
+			
+			id2.setText(id);
+			name2.setText(name);
+			description2.setText(description);
+			dateAdded2.setText(dateAdded);
+			price2.setText(price);
+			length2.setText(length);
+			width2.setText(width);
+			height2.setText(height);
+//			image2.setImage((Image) image);
+			
+			// third entry
+			rs.next();
+			
+			id = rs.getString(2);
+			name = rs.getString(3);
+			description = rs.getString(4);
+			price = rs.getString(5);
+			length = rs.getString(6);
+			width = rs.getString(7);
+			height = rs.getString(8);
+			dateAdded = rs.getString(9);
+//			image = rs.getBlob(14);
+			
+			id3.setText(id);
+			name3.setText(name);
+			description3.setText(description);
+			dateAdded3.setText(dateAdded);
+			price3.setText(price);
+			length3.setText(length);
+			width3.setText(width);
+			height3.setText(height);
+//			image3.setImage((Image) image);
+			
+			// fourth entry
+			rs.next();
+			
+			id = rs.getString(2);
+			name = rs.getString(3);
+			description = rs.getString(4);
+			price = rs.getString(5);
+			length = rs.getString(6);
+			width = rs.getString(7);
+			height = rs.getString(8);
+			dateAdded = rs.getString(9);
+//			image = rs.getBlob(14);
+			
+			id4.setText(id);
+			name4.setText(name);
+			description4.setText(description);
+			dateAdded4.setText(dateAdded);
+			price4.setText(price);
+			length4.setText(length);
+			width4.setText(width);
+			height4.setText(height);
+//			image4.setImage((Image) image);
+			
+			// fifth entry
+			rs.next();
+			
+			id = rs.getString(2);
+			name = rs.getString(3);
+			description = rs.getString(4);
+			price = rs.getString(5);
+			length = rs.getString(6);
+			width = rs.getString(7);
+			height = rs.getString(8);
+			dateAdded = rs.getString(9);
+//			image = rs.getBlob(14);
+			
+			id5.setText(id);
+			name5.setText(name);
+			description5.setText(description);
+			dateAdded5.setText(dateAdded);
+			price5.setText(price);
+			length5.setText(length);
+			width5.setText(width);
+			height5.setText(height);
+//			image5.setImage((Image) image);
+			
+			// sixth entry
+			rs.next();
+			
+			id = rs.getString(2);
+			name = rs.getString(3);
+			description = rs.getString(4);
+			price = rs.getString(5);
+			length = rs.getString(6);
+			width = rs.getString(7);
+			height = rs.getString(8);
+			dateAdded = rs.getString(9);
+//			image = rs.getBlob(14);
+			
+			id6.setText(id);
+			name6.setText(name);
+			description6.setText(description);
+			dateAdded6.setText(dateAdded);
+			price6.setText(price);
+			length6.setText(length);
+			width6.setText(width);
+			height6.setText(height);
+//			image6.setImage((Image) image);
+			
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		} 
 	}
 
 	public void logOut (ActionEvent event) throws Exception {
