@@ -1,12 +1,15 @@
 package customerProductSearch;
 
 import java.net.URL;
+import java.sql.Connection;
 //import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import dbUtil.DBConnection;
+//import dbUtil.dbConnection;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -175,7 +178,8 @@ public class SearchController implements Initializable {
 	
 	// puts all possible results into one virtual table to be sorted through //
 	public void getResults() {
-//		String makeVirtualTable = "CREATE VIRTUAL TABLE VirtualProductTable USING fts5 "
+		
+//		String makeVirtualTable = "CREATE VIRTUAL TABLE IF NOT EXISTS VirtualProductTable USING fts5 "
 //				+ "(id, name, description, price, length, width, height, "
 //				+ "dateAdded, isFurniture, isAppliance, isBuildingMaterial, isTool, selected, image)";
 //		try {
@@ -192,17 +196,16 @@ public class SearchController implements Initializable {
 		
 		switch (((Categories)this.categorySelect.getValue()).toString()) {
 		case "Furniture":
-			sqlGetData.concat(" AND isFurniture = 1");
+			sqlGetData = sqlGetData.concat(" AND isFurniture = 1");
 			break;
 		case "Appliances":
-			sqlGetData.concat(" AND isAppliance = 1");
+			sqlGetData = sqlGetData.concat(" AND isAppliance = 1");
 			break;
 		case "Building_Materials":
-			sqlGetData.concat(" AND isBuildingMaterial = 1");
-			System.out.println("Materials case hit");
+			sqlGetData = sqlGetData.concat(" AND isBuildingMaterial = 1");
 			break;
 		case "Tools":
-			sqlGetData.concat(" AND isTool = 1");
+			sqlGetData = sqlGetData.concat(" AND isTool = 1");
 			break;
 		default:
 			break;
@@ -210,39 +213,42 @@ public class SearchController implements Initializable {
 		
 		// corrects for empty/unimportant fields //
 		try {
-			PreparedStatement stmt = this.newSearchModel.connection.prepareStatement(sqlGetData);
-			if(this.idSearch.getText().equals(null) || this.idSearch.getText().equals("")) {
+			Connection conn = DBConnection.getConnection();
+			PreparedStatement stmt = conn.prepareStatement(sqlGetData);
+			
+			if(this.idSearch.getText().equals(null) || this.idSearch.getText().isEmpty()) {
 				stmt.setString(1, "id");
 			} else {
 				stmt.setString(1, this.idSearch.getText());
 			}
 			
-			if(this.priceSearch.getText().equals(null) || this.priceSearch.getText().equals("")) {
+			if(this.priceSearch.getText().equals(null) || this.priceSearch.getText().isEmpty()) {
 				stmt.setString(2, "price");
 			} else {
 				stmt.setString(2, this.priceSearch.getText());
 			}
 			
-			if(this.lengthSearch.getText().equals(null) || this.lengthSearch.getText().equals("")) {
+			if(this.lengthSearch.getText().equals(null) || this.lengthSearch.getText().isEmpty()) {
 				stmt.setString(3, "length");
 			} else {
 				stmt.setString(3, this.lengthSearch.getText());
 			}
 			
-			if(this.widthSearch.getText().equals(null) || this.widthSearch.getText().equals("")) {
+			if(this.widthSearch.getText().equals(null) || this.widthSearch.getText().isEmpty()) {
 				stmt.setString(4, "width");
 			} else {
 				stmt.setString(4, this.widthSearch.getText());
 			}
 			
-			if(this.heightSearch.getText().equals(null) || this.heightSearch.getText().equals("")) {
+			if(this.heightSearch.getText().equals(null) || this.heightSearch.getText().isEmpty()) {
 				stmt.setString(5, "height");
 			} else {
 				stmt.setString(5, this.heightSearch.getText());
 			}
 			
-			stmt.execute();
-			System.out.println("executed: " + sqlGetData);
+			if(!stmt.execute()) {
+				System.out.println("insert statement not executed");
+			}
 			stmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -261,7 +267,7 @@ public class SearchController implements Initializable {
 			rs = takeFields.executeQuery();
 //			rs.next();
 			if(! rs.next()) {
-				System.out.println("no table loaded");
+				System.out.println("no data loaded");
 				return;
 			}
 			// first entry
@@ -434,7 +440,7 @@ public class SearchController implements Initializable {
 	public void searchProduct (ActionEvent event) throws Exception {
 		// makes sure we are not just piling table after table every consecutive search //
 
-		String drop = "TRUNCATE TABLE VirtualProductTable";
+		String drop = "DELETE FROM VirtualProductTable";
 		PreparedStatement stmt = this.newSearchModel.connection.prepareStatement(drop);
 		stmt.execute();
 		stmt.close();
