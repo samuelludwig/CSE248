@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="840.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="customerProductSearch.SearchController">
+   <left>
+      <VBox prefHeight="742.0" prefWidth="178.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchProduct" text="Search" />
+            <TextField fx:id="nameSearch" />
+            <ComboBox fx:id="categorySelect" prefHeight="28.0" prefWidth="150.0" promptText="In Category -" />
+            <Label text="id" />
+            <TextField fx:id="idSearch" />
+            <Label text="Price" />
+            <TextField fx:id="priceSearch" />
+            <Label text="length" />
+            <TextField fx:id="lengthSearch" />
+            <Label text="width" />
+            <TextField fx:id="widthSearch" />
+            <Label text="height" />
+            <TextField fx:id="heightSearch" prefHeight="25.0" prefWidth="245.0" />
+         </children>
+         <padding>
+            <Insets left="4.0" right="4.0" />
+         </padding>
+      </VBox>
+   </left>
+   <right>
+      <VBox prefHeight="283.0" prefWidth="16.0" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <HBox prefHeight="32.0" prefWidth="1300.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="dbStatus" text="dbStatus">
+               <padding>
+                  <Insets bottom="2.0" left="4.0" right="8.0" />
+               </padding>
+            </Label>
+            <Button fx:id="previousPageButton" mnemonicParsing="false" onAction="#gotoPreviousPage" prefHeight="6.0" prefWidth="91.0" text="Previous Page" />
+            <Button fx:id="nextPageButton" mnemonicParsing="false" onAction="#gotoNextPage" text="Next Page" />
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <VBox prefHeight="429.0" prefWidth="591.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="26.0" prefWidth="1038.0">
+               <children>
+                  <Label text="Sort via..." />
+                  <Button mnemonicParsing="false" text="Price" />
+                  <Button mnemonicParsing="false" text="Date Added" />
+                  <Button mnemonicParsing="false" text="Relevance" />
+                  <HBox prefHeight="34.0" prefWidth="720.0" style="-fx-background-color: #0077FF; -fx-border-style: solid; -fx-border-color: gold;">
+                     <children>
+                        <Button fx:id="logOutButton" mnemonicParsing="false" text="Log Out" />
+                        <Button fx:id="viewOrdersButton" mnemonicParsing="false" text="View Orders" />
+                        <Button fx:id="editAccountButton" mnemonicParsing="false" text="Edit Account" />
+                     </children>
+                     <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="4.0" top="4.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="63.0" prefWidth="1060.0">
+               <children>
+                  <Separator prefHeight="0.0" prefWidth="1128.0" />
+               </children>
+            </HBox>
+            <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="100.0" prefWidth="1106.0" style="-fx-background-color: #eeeeee; -fx-border-color: gray;">
+               <children>
+                  <VBox minWidth="-Infinity" prefHeight="100.0" prefWidth="88.0">
+                     <children>
+                        <Label text="Product I.D. #" />
+                        <TextField fx:id="id1" editable="false" minHeight="-Infinity" prefHeight="25.0" prefWidth="75.0" />
+                     </children>
+                  </VBox>
+                  <TextArea fx:id="name1" editable="false" minWidth="-Infinity" onMouseClicked="#item1Chosen" prefColumnCount="12" prefHeight="98.0" prefWidth="140.0" style="-fx-text-inner-color: blue;" wrapText="true" />
+                  <TextArea fx:id="description1" editable="false" minWidth="-Infinity" prefColumnCount="16" prefHeight="98.0" prefWidth="176.0" style="-fx-wrap-text: true;" wrapText="true" />
+                  <VBox minWidth="-Infinity" prefHeight="100.0" prefWidth="113.0">
+                     <children>
+                        <Label text="Price: " />
+                        <HBox minWidth="-Infinity" prefHeight="81.0" prefWidth="104.0">
+                           <children>
+                              <Label prefHeight="33.0" prefWidth="22.0" text="\$" />
+                              <TextField fx:id="price1" editable="false" minWidth="-Infinity" prefHeight="33.0" prefWidth="103.0">
+                                 <HBox.margin>
+                                    <Insets right="6.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <TextArea fx:id="dateAdded1" editable="false" minWidth="-Infinity" prefHeight="98.0" prefWidth="140.0" />
+                  <TextArea minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="63.0" text="Length:&#10;&#10;Width:&#10;&#10;Height:">
+                     <font>
+                        <Font size="12.25" />
+                     </font>
+                  </TextArea>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="90.0">
+                     <children>
+                        <TextField fx:id="length1" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" />
+                        <TextField fx:id="width1" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="90.0" />
+                        <TextField fx:id="height1" editable="false" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" />
+                     </children>
+                  </VBox>
+                  <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="55.0" text="meters&#10;&#10;meters&#10;&#10;meters" />
+               </children>
+            </HBox>
+            <HBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="1098.0">
+               <children>
+                  <HBox maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="1106.0" style="-fx-background-color: #eeeeff; -fx-border-color: gray;">
+                     <children>
+                        <VBox minWidth="-Infinity" prefHeight="98.0" prefWidth="88.0">
+                           <children>
+                              <Label text="Product I.D. #" />
+                              <TextField fx:id="id2" editable="false" minHeight="-Infinity" prefHeight="25.0" prefWidth="75.0" />
+                           </children>
+                        </VBox>
+                        <TextArea fx:id="name2" editable="false" minWidth="-Infinity" onMouseClicked="#item2Chosen" prefColumnCount="12" prefHeight="98.0" prefWidth="140.0" style="-fx-text-inner-color: blue;" wrapText="true" />
+                        <TextArea fx:id="description2" editable="false" minWidth="-Infinity" prefColumnCount="16" prefHeight="98.0" prefWidth="176.0" wrapText="true" />
+                        <VBox minWidth="-Infinity" prefHeight="100.0" prefWidth="113.0">
+                           <children>
+                              <Label text="Price: " />
+                              <HBox minWidth="-Infinity" prefHeight="81.0" prefWidth="104.0">
+                                 <children>
+                                    <Label prefHeight="33.0" prefWidth="22.0" text="\$" />
+                                    <TextField fx:id="price2" editable="false" minWidth="-Infinity" prefHeight="33.0" prefWidth="103.0">
+                                       <HBox.margin>
+                                          <Insets right="6.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <TextArea fx:id="dateAdded2" minWidth="-Infinity" prefHeight="98.0" prefWidth="140.0" />
+                        <TextArea minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="63.0" text="Length:&#10;&#10;Width:&#10;&#10;Height:">
+                           <font>
+                              <Font size="12.25" />
+                           </font>
+                        </TextArea>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="90.0">
+                           <children>
+                              <TextField fx:id="length2" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" />
+                              <TextField fx:id="width2" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="90.0" />
+                              <TextField fx:id="height2" editable="false" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" />
+                           </children>
+                        </VBox>
+                        <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="55.0" text="meters&#10;&#10;meters&#10;&#10;meters" />
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="100.0" prefWidth="1106.0" style="-fx-background-color: #eeeeee; -fx-border-color: gray;">
+                     <children>
+                        <VBox minWidth="-Infinity" prefHeight="100.0" prefWidth="88.0">
+                           <children>
+                              <Label text="Product I.D. #" />
+                              <TextField fx:id="id3" editable="false" minHeight="-Infinity" prefHeight="25.0" prefWidth="75.0" />
+                           </children>
+                        </VBox>
+                        <TextArea fx:id="name3" editable="false" minWidth="-Infinity" onMouseClicked="#item3Chosen" prefColumnCount="12" prefHeight="98.0" prefWidth="140.0" style="-fx-text-inner-color: blue;" wrapText="true" />
+                        <TextArea fx:id="description3" editable="false" minWidth="-Infinity" prefColumnCount="16" prefHeight="98.0" prefWidth="176.0" wrapText="true" />
+                        <VBox minWidth="-Infinity" prefHeight="100.0" prefWidth="113.0">
+                           <children>
+                              <Label text="Price: " />
+                              <HBox minWidth="-Infinity" prefHeight="81.0" prefWidth="104.0">
+                                 <children>
+                                    <Label prefHeight="33.0" prefWidth="22.0" text="\$" />
+                                    <TextField fx:id="price3" editable="false" minWidth="-Infinity" prefHeight="33.0" prefWidth="103.0">
+                                       <HBox.margin>
+                                          <Insets right="6.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <TextArea fx:id="dateAdded3" editable="false" minWidth="-Infinity" prefHeight="98.0" prefWidth="140.0" />
+                        <TextArea minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="63.0" text="Length:&#10;&#10;Width:&#10;&#10;Height:">
+                           <font>
+                              <Font size="12.25" />
+                           </font>
+                        </TextArea>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="90.0">
+                           <children>
+                              <TextField fx:id="length3" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" />
+                              <TextField fx:id="width3" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="90.0" />
+                              <TextField fx:id="height3" editable="false" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" />
+                           </children>
+                        </VBox>
+                        <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="55.0" text="meters&#10;&#10;meters&#10;&#10;meters" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="100.0" prefWidth="1106.0" style="-fx-background-color: #eeeeff; -fx-border-color: gray;">
+                     <children>
+                        <VBox minWidth="-Infinity" prefHeight="100.0" prefWidth="88.0">
+                           <children>
+                              <Label text="Product I.D. #" />
+                              <TextField fx:id="id4" editable="false" minHeight="-Infinity" prefHeight="25.0" prefWidth="75.0" />
+                           </children>
+                        </VBox>
+                        <TextArea fx:id="name4" editable="false" minWidth="-Infinity" onMouseClicked="#item4Chosen" prefColumnCount="12" prefHeight="98.0" prefWidth="140.0" style="-fx-text-inner-color: blue;" wrapText="true" />
+                        <TextArea fx:id="description4" editable="false" minWidth="-Infinity" prefColumnCount="16" prefHeight="98.0" prefWidth="176.0" wrapText="true" />
+                        <VBox minWidth="-Infinity" prefHeight="100.0" prefWidth="113.0">
+                           <children>
+                              <Label text="Price: " />
+                              <HBox minWidth="-Infinity" prefHeight="81.0" prefWidth="104.0">
+                                 <children>
+                                    <Label prefHeight="33.0" prefWidth="22.0" text="\$" />
+                                    <TextField fx:id="price4" editable="false" minWidth="-Infinity" prefHeight="33.0" prefWidth="103.0">
+                                       <HBox.margin>
+                                          <Insets right="6.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <TextArea fx:id="dateAdded4" editable="false" minWidth="-Infinity" prefHeight="98.0" prefWidth="140.0" />
+                        <TextArea minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="63.0" text="Length:&#10;&#10;Width:&#10;&#10;Height:">
+                           <font>
+                              <Font size="12.25" />
+                           </font>
+                        </TextArea>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="90.0">
+                           <children>
+                              <TextField fx:id="length4" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" />
+                              <TextField fx:id="width4" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="90.0" />
+                              <TextField fx:id="height4" editable="false" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" />
+                           </children>
+                        </VBox>
+                        <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="55.0" text="meters&#10;&#10;meters&#10;&#10;meters" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="100.0" prefWidth="1106.0" style="-fx-background-color: #eeeeee; -fx-border-color: gray;">
+                     <children>
+                        <VBox minWidth="-Infinity" prefHeight="100.0" prefWidth="88.0">
+                           <children>
+                              <Label text="Product I.D. #" />
+                              <TextField fx:id="id5" editable="false" minHeight="-Infinity" prefHeight="25.0" prefWidth="75.0" />
+                           </children>
+                        </VBox>
+                        <TextArea fx:id="name5" editable="false" minWidth="-Infinity" onMouseClicked="#item5Chosen" prefColumnCount="12" prefHeight="98.0" prefWidth="140.0" style="-fx-text-inner-color: blue;" wrapText="true" />
+                        <TextArea fx:id="description5" editable="false" minWidth="-Infinity" prefColumnCount="16" prefHeight="98.0" prefWidth="176.0" wrapText="true" />
+                        <VBox minWidth="-Infinity" prefHeight="100.0" prefWidth="113.0">
+                           <children>
+                              <Label text="Price: " />
+                              <HBox minWidth="-Infinity" prefHeight="81.0" prefWidth="104.0">
+                                 <children>
+                                    <Label prefHeight="33.0" prefWidth="22.0" text="\$" />
+                                    <TextField fx:id="price5" editable="false" minWidth="-Infinity" prefHeight="33.0" prefWidth="103.0">
+                                       <HBox.margin>
+                                          <Insets right="6.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <TextArea fx:id="dateAdded5" editable="false" minWidth="-Infinity" prefHeight="98.0" prefWidth="140.0" />
+                        <TextArea minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="63.0" text="Length:&#10;&#10;Width:&#10;&#10;Height:">
+                           <font>
+                              <Font size="12.25" />
+                           </font>
+                        </TextArea>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="90.0">
+                           <children>
+                              <TextField fx:id="length5" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" />
+                              <TextField fx:id="width5" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="90.0" />
+                              <TextField fx:id="height5" editable="false" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" />
+                           </children>
+                        </VBox>
+                        <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="55.0" text="meters&#10;&#10;meters&#10;&#10;meters" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="100.0" prefWidth="1106.0" style="-fx-background-color: #eeeeff; -fx-border-color: gray;">
+                     <children>
+                        <VBox minWidth="-Infinity" prefHeight="100.0" prefWidth="88.0">
+                           <children>
+                              <Label text="Product I.D. #" />
+                              <TextField fx:id="id6" editable="false" minHeight="-Infinity" prefHeight="25.0" prefWidth="75.0" />
+                           </children>
+                        </VBox>
+                        <TextArea fx:id="name6" editable="false" minWidth="-Infinity" onMouseClicked="#item6Chosen" prefColumnCount="12" prefHeight="98.0" prefWidth="140.0" style="-fx-text-inner-color: blue;" wrapText="true" />
+                        <TextArea fx:id="description6" editable="false" minWidth="-Infinity" prefColumnCount="16" prefHeight="98.0" prefWidth="176.0" wrapText="true" />
+                        <VBox minWidth="-Infinity" prefHeight="100.0" prefWidth="113.0">
+                           <children>
+                              <Label text="Price: " />
+                              <HBox minWidth="-Infinity" prefHeight="81.0" prefWidth="104.0">
+                                 <children>
+                                    <Label prefHeight="33.0" prefWidth="22.0" text="\$" />
+                                    <TextField fx:id="price6" editable="false" minWidth="-Infinity" prefHeight="33.0" prefWidth="103.0">
+                                       <HBox.margin>
+                                          <Insets right="6.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <TextArea fx:id="dateAdded6" editable="false" minWidth="-Infinity" prefHeight="98.0" prefWidth="140.0" />
+                        <TextArea minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="63.0" text="Length:&#10;&#10;Width:&#10;&#10;Height:">
+                           <font>
+                              <Font size="12.25" />
+                           </font>
+                        </TextArea>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="90.0">
+                           <children>
+                              <TextField fx:id="length6" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" />
+                              <TextField fx:id="width6" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="90.0" />
+                              <TextField fx:id="height6" editable="false" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="90.0" />
+                           </children>
+                        </VBox>
+                        <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="55.0" text="meters&#10;&#10;meters&#10;&#10;meters" />
+                     </children>
+                  </HBox>
+               </children></HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
