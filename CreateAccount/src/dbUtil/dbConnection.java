@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class dbConnection {
 	
-	private static final String SQCONN = "jdbc:sqlite:H4HDB.sqlite";
+	private static final String SQCONN = "jdbc:sqlite:C:\\H4HProject\\H4HDB.sqlite";
 	
 	public static Connection getConnection() throws SQLException {
 		try {

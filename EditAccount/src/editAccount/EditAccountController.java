@@ -119,7 +119,7 @@ public class EditAccountController implements Initializable {
 						conn.close();
 					
 						/* Run Login program */
-						Runtime.getRuntime().exec("java -jar \\H4HProject\\H4H_Login.jar");
+						Runtime.getRuntime().exec("java -jar \\H4HProject\\Runnables\\H4H_Login.jar");
 						Stage stage = (Stage)this.updateAccountButton.getScene().getWindow();
 						stage.close();
 						
@@ -199,7 +199,7 @@ public class EditAccountController implements Initializable {
 						conn.close();
 					
 						/* Run AddPaymentInfo program */
-						Runtime.getRuntime().exec("java -jar \\H4HProject\\AddPaymentInfo.jar");
+						Runtime.getRuntime().exec("java -jar \\H4HProject\\Runnables\\AddPaymentInfo.jar");
 						Stage stage = (Stage)this.addPaymentButton.getScene().getWindow();
 						stage.close();
 						

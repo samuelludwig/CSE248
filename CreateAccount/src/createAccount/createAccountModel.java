@@ -38,8 +38,12 @@ Connection connection;
 			rs = pr.executeQuery();
 			
 			if(rs.next()) {
+				pr.close();
+				rs.close();
 				return true;
 			} else { 
+				pr.close();
+				rs.close();
 				return false;
 			}
 			
@@ -47,11 +51,5 @@ Connection connection;
 			return false;
 		}
 		
-		finally {
-			{
-			pr.close();
-			rs.close();
-			}
-		}
 	}
 }

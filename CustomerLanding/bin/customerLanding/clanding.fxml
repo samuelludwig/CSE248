@@ -5,10 +5,12 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="customerLanding.CustomerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="customerLanding.CustomerController">
    <children>
-      <Button fx:id="logOutButton" layoutX="272.0" layoutY="292.0" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
-      <Button fx:id="updateAccountButton" layoutX="238.0" layoutY="188.0" mnemonicParsing="false" onAction="#updateAccount" text="Update Account Info" />
-      <Button fx:id="searchForButton" layoutX="234.0" layoutY="84.0" mnemonicParsing="false" onAction="#search" text="Search For Something" />
+      <Button fx:id="logOutButton" layoutX="145.0" layoutY="120.0" mnemonicParsing="false" onAction="#logOut" prefWidth="60.0" text="Log Out" />
+      <Button fx:id="updateAccountButton" layoutX="190.0" layoutY="75.0" mnemonicParsing="false" onAction="#updateAccount" prefHeight="25.0" prefWidth="135.0" text="Update Account Info" />
+      <Button fx:id="searchForButton" layoutX="30.0" layoutY="75.0" mnemonicParsing="false" onAction="#search" prefWidth="135.0" text="Search For Something" />
+      <Label fx:id="welcomeBanner" layoutX="14.0" layoutY="14.0" text="Welcome Banner" />
+      <Label fx:id="dbStatus" layoutX="14.0" layoutY="178.0" text="Label" />
    </children>
 </AnchorPane>

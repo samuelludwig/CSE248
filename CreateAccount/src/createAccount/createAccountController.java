@@ -93,7 +93,7 @@ public class createAccountController implements Initializable{
 						conn.close();
 					
 						/* Run Login program */
-						Runtime.getRuntime().exec("java -jar \\H4HProject\\H4H_Login.jar");
+						Runtime.getRuntime().exec("java -jar \\H4HProject\\Runnables\\H4H_Login.jar");
 						Stage stage = (Stage)this.createAccountButton.getScene().getWindow();
 						stage.close();
 						

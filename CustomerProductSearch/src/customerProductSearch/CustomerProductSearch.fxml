@@ -32,18 +32,6 @@
          </padding>
       </VBox>
    </left>
-   <top>
-      <HBox prefHeight="34.0" prefWidth="720.0" style="-fx-background-color: #0077FF; -fx-border-style: solid; -fx-border-color: gold;" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="logOutButton" mnemonicParsing="false" text="Log Out" />
-            <Button fx:id="viewOrdersButton" mnemonicParsing="false" text="View Orders" />
-            <Button fx:id="editAccountButton" mnemonicParsing="false" text="Edit Account" />
-         </children>
-         <padding>
-            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-         </padding>
-      </HBox>
-   </top>
    <right>
       <VBox prefHeight="283.0" prefWidth="16.0" BorderPane.alignment="CENTER" />
    </right>
@@ -55,8 +43,8 @@
                   <Insets bottom="2.0" left="4.0" right="8.0" />
                </padding>
             </Label>
-            <Button fx:id="previousPageButton" mnemonicParsing="false" prefHeight="6.0" prefWidth="91.0" text="Previous Page" />
-            <Button fx:id="nextPageButton" mnemonicParsing="false" text="Next Page" />
+            <Button fx:id="previousPageButton" mnemonicParsing="false" onAction="#gotoPreviousPage" prefHeight="6.0" prefWidth="91.0" text="Previous Page" />
+            <Button fx:id="nextPageButton" mnemonicParsing="false" onAction="#gotoNextPage" text="Next Page" />
          </children>
       </HBox>
    </bottom>
@@ -65,10 +53,16 @@
          <children>
             <HBox prefHeight="26.0" prefWidth="1038.0">
                <children>
-                  <Label text="Sort via..." />
-                  <Button mnemonicParsing="false" text="Price" />
-                  <Button mnemonicParsing="false" text="Date Added" />
-                  <Button mnemonicParsing="false" text="Relevance" />
+                  <HBox prefHeight="35.0" prefWidth="1121.0" style="-fx-background-color: #0077FF; -fx-border-style: solid; -fx-border-color: gold;">
+                     <children>
+                        <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
+                        <Button fx:id="goBack" mnemonicParsing="false" onAction="#goBack" text="Back To Main Menu" />
+                        <Button fx:id="editAccountButton" mnemonicParsing="false" onAction="#editAccount" text="Edit Account" />
+                     </children>
+                     <padding>
+                        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                     </padding>
+                  </HBox>
                </children>
                <padding>
                   <Insets bottom="4.0" top="4.0" />
@@ -87,8 +81,8 @@
                         <TextField fx:id="id1" editable="false" minHeight="-Infinity" prefHeight="25.0" prefWidth="75.0" />
                      </children>
                   </VBox>
-                  <TextArea fx:id="name1" editable="false" minWidth="-Infinity" prefHeight="98.0" prefWidth="140.0" style="-fx-text-inner-color: blue;" />
-                  <TextArea fx:id="description1" editable="false" minWidth="-Infinity" prefHeight="98.0" prefWidth="176.0" />
+                  <TextArea fx:id="name1" editable="false" minWidth="-Infinity" onMouseClicked="#item1Chosen" prefColumnCount="12" prefHeight="98.0" prefWidth="140.0" style="-fx-text-inner-color: blue;" wrapText="true" />
+                  <TextArea fx:id="description1" editable="false" minWidth="-Infinity" prefColumnCount="16" prefHeight="98.0" prefWidth="176.0" style="-fx-wrap-text: true;" wrapText="true" />
                   <VBox minWidth="-Infinity" prefHeight="100.0" prefWidth="113.0">
                      <children>
                         <Label text="Price: " />
@@ -118,10 +112,6 @@
                      </children>
                   </VBox>
                   <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="55.0" text="meters&#10;&#10;meters&#10;&#10;meters" />
-                  <ImageView fx:id="image1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <HBox.margin>
-                        <Insets left="32.0" />
-                     </HBox.margin></ImageView>
                </children>
             </HBox>
             <HBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="1098.0">
@@ -134,8 +124,8 @@
                               <TextField fx:id="id2" editable="false" minHeight="-Infinity" prefHeight="25.0" prefWidth="75.0" />
                            </children>
                         </VBox>
-                        <TextArea fx:id="name2" editable="false" minWidth="-Infinity" prefHeight="98.0" prefWidth="140.0" style="-fx-text-inner-color: blue;" />
-                        <TextArea fx:id="description2" editable="false" minWidth="-Infinity" prefHeight="98.0" prefWidth="176.0" />
+                        <TextArea fx:id="name2" editable="false" minWidth="-Infinity" onMouseClicked="#item2Chosen" prefColumnCount="12" prefHeight="98.0" prefWidth="140.0" style="-fx-text-inner-color: blue;" wrapText="true" />
+                        <TextArea fx:id="description2" editable="false" minWidth="-Infinity" prefColumnCount="16" prefHeight="98.0" prefWidth="176.0" wrapText="true" />
                         <VBox minWidth="-Infinity" prefHeight="100.0" prefWidth="113.0">
                            <children>
                               <Label text="Price: " />
@@ -165,11 +155,6 @@
                            </children>
                         </VBox>
                         <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="55.0" text="meters&#10;&#10;meters&#10;&#10;meters" />
-                        <ImageView fx:id="image2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="32.0" />
-                           </HBox.margin>
-                        </ImageView>
                      </children>
                      <HBox.margin>
                         <Insets />
@@ -187,8 +172,8 @@
                               <TextField fx:id="id3" editable="false" minHeight="-Infinity" prefHeight="25.0" prefWidth="75.0" />
                            </children>
                         </VBox>
-                        <TextArea fx:id="name3" editable="false" minWidth="-Infinity" prefHeight="98.0" prefWidth="140.0" style="-fx-text-inner-color: blue;" />
-                        <TextArea fx:id="description3" editable="false" minWidth="-Infinity" prefHeight="98.0" prefWidth="176.0" />
+                        <TextArea fx:id="name3" editable="false" minWidth="-Infinity" onMouseClicked="#item3Chosen" prefColumnCount="12" prefHeight="98.0" prefWidth="140.0" style="-fx-text-inner-color: blue;" wrapText="true" />
+                        <TextArea fx:id="description3" editable="false" minWidth="-Infinity" prefColumnCount="16" prefHeight="98.0" prefWidth="176.0" wrapText="true" />
                         <VBox minWidth="-Infinity" prefHeight="100.0" prefWidth="113.0">
                            <children>
                               <Label text="Price: " />
@@ -218,11 +203,6 @@
                            </children>
                         </VBox>
                         <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="55.0" text="meters&#10;&#10;meters&#10;&#10;meters" />
-                        <ImageView fx:id="image3" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="32.0" />
-                           </HBox.margin>
-                        </ImageView>
                      </children>
                   </HBox>
                </children>
@@ -237,8 +217,8 @@
                               <TextField fx:id="id4" editable="false" minHeight="-Infinity" prefHeight="25.0" prefWidth="75.0" />
                            </children>
                         </VBox>
-                        <TextArea fx:id="name4" editable="false" minWidth="-Infinity" prefHeight="98.0" prefWidth="140.0" style="-fx-text-inner-color: blue;" />
-                        <TextArea fx:id="description4" editable="false" minWidth="-Infinity" prefHeight="98.0" prefWidth="176.0" />
+                        <TextArea fx:id="name4" editable="false" minWidth="-Infinity" onMouseClicked="#item4Chosen" prefColumnCount="12" prefHeight="98.0" prefWidth="140.0" style="-fx-text-inner-color: blue;" wrapText="true" />
+                        <TextArea fx:id="description4" editable="false" minWidth="-Infinity" prefColumnCount="16" prefHeight="98.0" prefWidth="176.0" wrapText="true" />
                         <VBox minWidth="-Infinity" prefHeight="100.0" prefWidth="113.0">
                            <children>
                               <Label text="Price: " />
@@ -268,11 +248,6 @@
                            </children>
                         </VBox>
                         <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="55.0" text="meters&#10;&#10;meters&#10;&#10;meters" />
-                        <ImageView fx:id="image4" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="32.0" />
-                           </HBox.margin>
-                        </ImageView>
                      </children>
                   </HBox>
                </children>
@@ -287,8 +262,8 @@
                               <TextField fx:id="id5" editable="false" minHeight="-Infinity" prefHeight="25.0" prefWidth="75.0" />
                            </children>
                         </VBox>
-                        <TextArea fx:id="name5" editable="false" minWidth="-Infinity" prefHeight="98.0" prefWidth="140.0" style="-fx-text-inner-color: blue;" />
-                        <TextArea fx:id="description5" editable="false" minWidth="-Infinity" prefHeight="98.0" prefWidth="176.0" />
+                        <TextArea fx:id="name5" editable="false" minWidth="-Infinity" onMouseClicked="#item5Chosen" prefColumnCount="12" prefHeight="98.0" prefWidth="140.0" style="-fx-text-inner-color: blue;" wrapText="true" />
+                        <TextArea fx:id="description5" editable="false" minWidth="-Infinity" prefColumnCount="16" prefHeight="98.0" prefWidth="176.0" wrapText="true" />
                         <VBox minWidth="-Infinity" prefHeight="100.0" prefWidth="113.0">
                            <children>
                               <Label text="Price: " />
@@ -318,11 +293,6 @@
                            </children>
                         </VBox>
                         <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="55.0" text="meters&#10;&#10;meters&#10;&#10;meters" />
-                        <ImageView fx:id="image5" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="32.0" />
-                           </HBox.margin>
-                        </ImageView>
                      </children>
                   </HBox>
                </children>
@@ -337,8 +307,8 @@
                               <TextField fx:id="id6" editable="false" minHeight="-Infinity" prefHeight="25.0" prefWidth="75.0" />
                            </children>
                         </VBox>
-                        <TextArea fx:id="name6" editable="false" minWidth="-Infinity" prefHeight="98.0" prefWidth="140.0" style="-fx-text-inner-color: blue;" />
-                        <TextArea fx:id="description6" editable="false" minWidth="-Infinity" prefHeight="98.0" prefWidth="176.0" />
+                        <TextArea fx:id="name6" editable="false" minWidth="-Infinity" onMouseClicked="#item6Chosen" prefColumnCount="12" prefHeight="98.0" prefWidth="140.0" style="-fx-text-inner-color: blue;" wrapText="true" />
+                        <TextArea fx:id="description6" editable="false" minWidth="-Infinity" prefColumnCount="16" prefHeight="98.0" prefWidth="176.0" wrapText="true" />
                         <VBox minWidth="-Infinity" prefHeight="100.0" prefWidth="113.0">
                            <children>
                               <Label text="Price: " />
@@ -368,11 +338,6 @@
                            </children>
                         </VBox>
                         <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="98.0" prefWidth="55.0" text="meters&#10;&#10;meters&#10;&#10;meters" />
-                        <ImageView fx:id="image6" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                           <HBox.margin>
-                              <Insets left="32.0" />
-                           </HBox.margin>
-                        </ImageView>
                      </children>
                   </HBox>
                </children></HBox>
