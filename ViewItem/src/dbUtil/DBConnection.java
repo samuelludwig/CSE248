@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class dbConnection {
+public class DBConnection {
 	
 	private static final String SQCONN = "jdbc:sqlite:C:\\H4HProject\\H4HDB.sqlite";
 	

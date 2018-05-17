@@ -27,7 +27,7 @@ public class landingController implements Initializable{
 	@FXML
 	public void login(ActionEvent event) throws Exception {
 		try {
-			Runtime.getRuntime().exec("java -jar \\H4HProject\\H4H_Login.jar");
+			Runtime.getRuntime().exec("java -jar \\H4HProject\\Runnables\\H4H_Login.jar");
 			Stage stage = (Stage)this.loginButton.getScene().getWindow();
 			stage.close();
 		} catch(Exception localException) {
@@ -39,7 +39,7 @@ public class landingController implements Initializable{
 	
 	public void createAccount(ActionEvent event) throws Exception {
 		try {
-			Runtime.getRuntime().exec("java -jar \\H4HProject\\CreateAccount.jar");
+			Runtime.getRuntime().exec("java -jar \\H4HProject\\Runnables\\CreateAccount.jar");
 			Stage stage = (Stage)this.loginButton.getScene().getWindow();
 			stage.close();
 		} catch(Exception localException) {
