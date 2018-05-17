@@ -96,11 +96,15 @@ public class AddInfoController implements Initializable{
 						PreparedStatement p = conn.prepareStatement(sqlDivision);
 						ResultSet rs = p.executeQuery();
 						
-						if(rs.getString(1) == "Customer") {
-							Runtime.getRuntime().exec("java -jar \\H4HProject\\CustomerLanding.jar");
+						if(rs.getString(1).equals("Customer")) {
+							Runtime.getRuntime().exec("java -jar \\H4HProject\\Runnables\\CustomerLanding.jar");
+							Stage stage = (Stage)this.addInfoButton.getScene().getWindow();
+							stage.close();
 						} 
-						else if(rs.getString(1) == "Employee") {
-							Runtime.getRuntime().exec("java -jar \\H4HProject\\EmployeeLanding.jar");
+						else if(rs.getString(1).equals("Employee")) {
+							Runtime.getRuntime().exec("java -jar \\H4HProject\\Runnables\\EmployeeLanding.jar");
+							Stage stage = (Stage)this.addInfoButton.getScene().getWindow();
+							stage.close();
 						}
 						
 						Stage stage = (Stage)this.addInfoButton.getScene().getWindow();
