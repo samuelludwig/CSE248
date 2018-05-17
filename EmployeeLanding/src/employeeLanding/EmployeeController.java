@@ -2,6 +2,9 @@ package employeeLanding;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -19,38 +22,59 @@ public class EmployeeController implements Initializable {
 	@FXML 
 	private Button updateAccountButton;
 	@FXML
+	private Button addItemButton;
+	@FXML
 	private Label dbStatus;
+	@FXML
+	private Label welcomeBanner;
 	
+	public void addItem() throws IOException {
+		Runtime.getRuntime().exec("java -jar \\H4HProject\\Runnables\\AddProductToList.jar");
+		Stage stage = (Stage)this.addItemButton.getScene().getWindow();
+		stage.close();
+	}
 	
 	public void search() throws IOException {
-		Runtime.getRuntime().exec("java -jar \\H4HProject\\EmployeeProductSearch.jar");
+		Runtime.getRuntime().exec("java -jar \\H4HProject\\Runnables\\CustomerProductSearch.jar");
 		Stage stage = (Stage)this.searchForButton.getScene().getWindow();
 		stage.close();
 	}
 	
 	public void logOut() throws IOException {
-		Runtime.getRuntime().exec("java -jar \\H4HProject\\H4H_Login.jar");
+		Runtime.getRuntime().exec("java -jar \\H4HProject\\Runnables\\H4H_Login.jar");
 		Stage stage = (Stage)this.logOutButton.getScene().getWindow();
 		stage.close();
 	}
 	
 	public void updateAccount() throws IOException {
-		Runtime.getRuntime().exec("java -jar \\H4HProject\\EditAccount.jar");
+		Runtime.getRuntime().exec("java -jar \\H4HProject\\Runnables\\EditAccount.jar");
 		Stage stage = (Stage)this.updateAccountButton.getScene().getWindow();
 		stage.close();
 	}
 	
 	
-	EmployeeModel employeeModel = new EmployeeModel();
+	EmployeeModel customerModel = new EmployeeModel();
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		if(this.employeeModel.isConnected()) {
+		if(this.customerModel.isConnected()) {
 			this.dbStatus.setText("Connected...");
 		} else {
 			this.dbStatus.setText("Connection failed...");
 		}
 	
+		String getUserName = "SELECT firstName FROM H4HUserTable WHERE activeOnMachine = 'True'";
+		try {
+			PreparedStatement stmt = this.customerModel.connection.prepareStatement(getUserName);
+			ResultSet rs = stmt.executeQuery();
+			rs.next();
+			String name = rs.getString("firstName");
+			
+			welcomeBanner.setText("Welcome " + name + "!");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

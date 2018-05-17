@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="itemReserved.ItemReservedController">
+   <children>
+      <Button fx:id="searchButton" layoutX="165.0" layoutY="61.0" mnemonicParsing="false" onAction="#gotoSearch" prefHeight="25.0" prefWidth="121.0" text="Search For More" />
+      <Text layoutX="55.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratualtions, your item's been reserved!" textAlignment="CENTER" wrappingWidth="190.13671875" />
+      <Button fx:id="landingButton" layoutX="14.0" layoutY="61.0" mnemonicParsing="false" onAction="#gotoLanding" text="Back To Main Menu" />
+   </children>
+</AnchorPane>

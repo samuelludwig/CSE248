@@ -98,19 +98,9 @@ public class H4HLoginController implements Initializable {
 	
 	public void customerLogin() {
 		try {
-//			Stage userStage = new Stage();
-//			FXMLLoader loader = new FXMLLoader();
-//			Pane root = (Pane)loader.load(getClass().getResource("/customer/Customer.fxml").openStream());
-//			CustomerController customerController = (CustomerController)loader.getController();
-//		
-//			Scene scene = new Scene(root);
-//			userStage.setScene(scene);
-//			userStage.setTitle("Customer Dashboard");
-//			userStage.setResizable(false);
-//			userStage.show();
-			/* Run Login program */
-			Runtime.getRuntime().exec("java -jar \\H4HProject\\CustomerLanding.jar");
-			
+			Runtime.getRuntime().exec("java -jar \\H4HProject\\Runnables\\CustomerLanding.jar");
+			Stage stage = (Stage)this.loginButton.getScene().getWindow();
+			stage.close();
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		}
@@ -118,18 +108,9 @@ public class H4HLoginController implements Initializable {
 	
 	public void employeeLogin() {
 		try {
-//			Stage employeeStage = new Stage();
-//			FXMLLoader employeeLoader = new FXMLLoader();
-//			Pane employeeRoot = (Pane)employeeLoader.load(getClass().getResource("/employee/Employee.fxml").openStream());
-//			EmployeeController employeeController = (EmployeeController)employeeLoader.getController();
-//		
-//			Scene scene = new Scene(employeeRoot);
-//			employeeStage.setScene(scene);
-//			employeeStage.setTitle("Employee Dashboard");
-//			employeeStage.setResizable(false);
-//			employeeStage.show();
-			Runtime.getRuntime().exec("java -jar \\H4HProject\\EmployeeLanding.jar");
-			
+			Runtime.getRuntime().exec("java -jar \\H4HProject\\Runnables\\EmployeeLanding.jar");
+			Stage stage = (Stage)this.loginButton.getScene().getWindow();
+			stage.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
